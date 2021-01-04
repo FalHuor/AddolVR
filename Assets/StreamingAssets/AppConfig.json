@@ -1,3 +1,4 @@
 {
-    "DeviceUsed": "AUTO"
+    "DeviceUsed": "AUTO",
+    "WebAPILink": "api.openweathermap.org/data/2.5/weather?id=6449452&appid=e7244f113d429bc8a453d641e588f3aa&units=metric"
 }

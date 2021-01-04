@@ -9,6 +9,8 @@ TagManager:
   - InteractionBall
   - Activable
   - Fire
+  - Bullet
+  - Rain
   layers:
   - Default
   - TransparentFX
