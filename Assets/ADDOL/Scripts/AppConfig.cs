@@ -41,12 +41,12 @@ public class AppConfig {
     }
 
     /// <summary>
-    /// Read from the json file called StreamingAssets/{Application.productName+".AppConfig.json"}
+    /// Read from the json file called StreamingAssets/{"AppConfig.json"}
     /// </summary>
     public void UpdateValuesFromJsonFile()
     {
         Debug.Log(Application.absoluteURL);
-        string path = System.IO.Path.Combine(Application.streamingAssetsPath, Application.productName+".AppConfig.json");
+        string path = System.IO.Path.Combine(Application.streamingAssetsPath, "AppConfig.json");
        
         UpdateValuesFromJsonFile(path);
     }
