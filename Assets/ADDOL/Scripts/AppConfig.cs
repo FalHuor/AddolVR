@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class AppConfig {
     // HTC, force the device to HTC, PC, force device to PC Keyboard, AUTO: select the device according to the hardware connected.
-    public string DeviceUsed = "AUTO"; 
-
+    public string DeviceUsed = "AUTO";
+    public string WebAPILink;
 
     private static AppConfig inst;
 
@@ -37,6 +37,7 @@ public class AppConfig {
     /// <param name="filePath"></param>
     public void UpdateValuesFromJsonFile(string filePath)
     {
+        Debug.Log("Chemin du AppConfig.json : " + filePath);
         UpdateValuesFromJsonString(System.IO.File.ReadAllText(filePath));
     }
 
@@ -46,8 +47,8 @@ public class AppConfig {
     public void UpdateValuesFromJsonFile()
     {
         Debug.Log(Application.absoluteURL);
-        string path = System.IO.Path.Combine(Application.streamingAssetsPath, Application.productName+".AppConfig.json");
-       
+        string path = System.IO.Path.Combine(Application.streamingAssetsPath, "AppConfig.json");
+        Debug.Log("Chemin du AppConfig.json : " + path);
         UpdateValuesFromJsonFile(path);
     }
 
