@@ -137,13 +137,13 @@ namespace OceanSurfaceEffects
             {
                 m_resolution = (int)Mathf.Sqrt(65000);
 
-                Debug.Log("Grid resolution set to high. Setting resolution to the maximum allowed(" + m_resolution.ToString() + ")");
+                //Debug.Log("Grid resolution set to high. Setting resolution to the maximum allowed(" + m_resolution.ToString() + ")");
             }
 
             if (m_bias < 1.0f)
             {
                 m_bias = 1.0f;
-                Debug.Log("Bias must not be less than 1, changing to 1");
+                //Debug.Log("Bias must not be less than 1, changing to 1");
             }
 
             Mesh mesh = CreateRadialGrid(m_resolution, m_resolution);
@@ -187,10 +187,13 @@ namespace OceanSurfaceEffects
             m_oceanMat.SetFloat("_LodFadeDist", m_lodFadeDist);
 
             //This makes sure the grid is always centered were the player is
-            Vector3 pos = Camera.main.transform.position;
-            pos.y = m_seaLevel;
+            if(Camera.main)
+            {
+                Vector3 pos = Camera.main.transform.position;
+                pos.y = m_seaLevel;
 
-            m_grid.transform.localPosition = pos;
+                m_grid.transform.localPosition = pos;
+            }
 
         }
 

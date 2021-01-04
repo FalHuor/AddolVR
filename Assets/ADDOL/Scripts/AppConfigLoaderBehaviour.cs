@@ -10,9 +10,9 @@ public class AppConfigLoaderBehaviour : MonoBehaviour {
     /// </summary>
     public string AppConfigFilePath;
     // Use this for initialization
-    void Awake () {
-        Debug.Log(Application.productName + ".AppConfig.json BEFORE LOADING");
-        Debug.Log(AppConfig.Inst.ToJsonString());
+    void Start () {
+        //Debug.Log("AppConfig.json BEFORE LOADING");
+        //Debug.Log(AppConfig.Inst.ToJsonString());
 
         if (string.IsNullOrEmpty(AppConfigFilePath)) AppConfig.Inst.UpdateValuesFromJsonFile();
         else AppConfig.Inst.UpdateValuesFromJsonFile(AppConfigFilePath);

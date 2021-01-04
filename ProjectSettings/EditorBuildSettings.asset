@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/FPU_scene_01.unity
-    guid: 1cf412dd3cf68e34e869265fcb6871a4
+  - enabled: 1
+    path: Assets/ADDOL/Scenes/AppConfigLoaderScene.unity
+    guid: 69df46be537e3054bbdf8d5354f7a195
+  - enabled: 1
+    path: Assets/ADDOL/Scenes/LobbyScene.unity
+    guid: 5777229ff33bdab45a2b45bb7df76ea9
+  - enabled: 1
+    path: Assets/ADDOL/Scenes/ADDOL_scene.unity
+    guid: e45bf382942129e41a7c34a1a4f48098
   m_configObjects: {}
