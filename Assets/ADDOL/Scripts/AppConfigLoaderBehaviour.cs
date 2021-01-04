@@ -10,7 +10,7 @@ public class AppConfigLoaderBehaviour : MonoBehaviour {
     /// </summary>
     public string AppConfigFilePath;
     // Use this for initialization
-    void Start () {
+    void Awake () {
         Debug.Log(Application.productName + ".AppConfig.json BEFORE LOADING");
         Debug.Log(AppConfig.Inst.ToJsonString());
 

@@ -6,16 +6,10 @@ public class SkyboxManager : MonoBehaviour
 {
 
     public List<Material> ListSkybox = new List<Material>();
-    /*public Material SkyNightMoon;
-    public Material SkypinkGlorious;
-    public Material BlueSunset;
-    public Material DeepDusk;
-    public Material ColdSunset;
-    public Material ColdNight;
-    public Material NightSky;
-    public Material DaySky;*/
     public bool UseApi;
     public int UseSky;
+    public bool isRaining;
+    public ParticleSystem Rain;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +27,11 @@ public class SkyboxManager : MonoBehaviour
             RenderSettings.skybox = ListSkybox[0];
         }
 
+        Debug.Log(Rain);
+        if (isRaining == true)
+        {
+            Rain.Play();
+        }
     }
 
     // Update is called once per frame
@@ -43,24 +42,28 @@ public class SkyboxManager : MonoBehaviour
 
     public void UpdateSkybox()
     {
-        switch (Meteo.Inst.weather[0].description)
+        //Meteo.Inst.weather[0].description = "mist";
+        switch (Meteo.Inst.weather[0].main)
         {
-            case "clear sky":
+            case "Clear":
                 RenderSettings.skybox = ListSkybox[7];
                 break;
-            case "few clouds":
+            case "Dust":
                 RenderSettings.skybox = ListSkybox[2];
                 break;
-            case "broken clouds":
+            case "Clouds":
                 RenderSettings.skybox = ListSkybox[1];
                 break;
-            case "rain":
+            case "Rain":
                 RenderSettings.skybox = ListSkybox[3];
+                Rain.Play();
+                Debug.Log("is raining : " + Rain.isPlaying);
                 break;
-            case "thunderstorm":
+            case "Thunderstorm":
                 RenderSettings.skybox = ListSkybox[6];
+                Rain.Play();
                 break;
-            case "mist":
+            case "Mist":
                 RenderSettings.skybox = ListSkybox[4];
                 break;
             default:
