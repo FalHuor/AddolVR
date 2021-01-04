@@ -2404,6 +2404,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4611148705335667166}
   - {fileID: 5249321184103423966}
+  - {fileID: 114956014110777288}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2477,17 +2478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00709d17c0b9e74ab4dbb546d19d9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerLocalMat: {fileID: 0}
+  PlayerLocalMat: {fileID: 2100000, guid: 2288f74f1bc49e6498578f236b36ea0c, type: 2}
   GameObjectLocalPlayerColor: {fileID: 0}
   snowballSpawner: {fileID: 0}
   SnowballPrefab: {fileID: 0}
   MinSpeed: 0
   MaxSpeed: 0
   MaxSpeedForPressDuration: 0
-  Health3: {fileID: 0}
-  Health2: {fileID: 0}
-  Health1: {fileID: 0}
-  ForceHit: 0
 --- !u!1 &4057299062921871748
 GameObject:
   m_ObjectHideFlags: 0

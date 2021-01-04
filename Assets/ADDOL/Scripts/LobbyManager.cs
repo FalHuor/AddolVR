@@ -100,11 +100,11 @@ namespace WS3
         {
             if (string.IsNullOrEmpty(nickNameInputField.text))
             {
-                Debug.LogError("Nickname must be set to a value");
+                //Debug.LogError("Nickname must be set to a value");
                 nickNameInputField.placeholder.GetComponent<Text>().text = "!! Nickname Empty!!";
                 return;
             }
-            Debug.Log(string.Format("Connect event server PhotonNetwork.IsConnected {0}", PhotonNetwork.IsConnected));
+            //Debug.Log(string.Format("Connect event server PhotonNetwork.IsConnected {0}", PhotonNetwork.IsConnected));
             progressLabel.SetActive(true);
             controlPanel.SetActive(false);
             isConnecting = true;
@@ -131,7 +131,7 @@ namespace WS3
                 {
                     // Use local server OnPremise
                     // See this thread for more details https://forum.photonengine.com/discussion/comment/43218/#Comment_43218
-                    Debug.LogFormat("Use OnPremise Server - Connect to {0}:{1}", ip, port);
+                    //Debug.LogFormat("Use OnPremise Server - Connect to {0}:{1}", ip, port);
                     PhotonNetwork.PhotonServerSettings.AppSettings.UseNameServer = false;
                     PhotonNetwork.PhotonServerSettings.AppSettings.Server = ip;
                     PhotonNetwork.PhotonServerSettings.AppSettings.Port = port;
@@ -141,7 +141,7 @@ namespace WS3
                 else
                 {
                     // Used for cloud Server.
-                    Debug.LogFormat("Connect Cloud server to App Id {0}", PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime.Substring(0, 10)+"...");
+                    //Debug.LogFormat("Connect Cloud server to App Id {0}", PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime.Substring(0, 10)+"...");
                     PhotonNetwork.GameVersion = gameVersion;
                     PhotonNetwork.PhotonServerSettings.AppSettings.UseNameServer = true;
                     //PhotonNetwork.ConnectUsingSettings();
@@ -167,7 +167,7 @@ namespace WS3
         public override void OnConnectedToMaster()
         {
             // TODO: it means that we are connected to the master server, so try to join an exising room
-            Debug.Log("Connected to server");
+            //Debug.Log("Connected to server");
             // VHD attention, cet événement est appelé lorsque on quitte une room et que l'on revient sur le Lobby.
             if (isConnecting)
             {
@@ -178,27 +178,27 @@ namespace WS3
 
         public override void OnDisconnected(DisconnectCause cause)
         {
-            Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
+            //Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
             progressLabel.SetActive(false);
             controlPanel.SetActive(true);
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
-            Debug.LogWarningFormat("OnJoinRandomFailed() was called by PUN. {0}: {1}", returnCode, message);
+            //Debug.LogWarningFormat("OnJoinRandomFailed() was called by PUN. {0}: {1}", returnCode, message);
 
             // TODO: joining the room has failed, so we try creating a new one
-            Debug.Log("Create Room");
+            //Debug.Log("Create Room");
             PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
         }
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("OnJoinedRoom()");
+            //Debug.Log("OnJoinedRoom()");
             // TODO the room has been joined, so we can load the Scene for starting the application
             if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
             {
-                Debug.Log("We load the scene 'ADDOL_scene'");
+                //Debug.Log("We load the scene 'ADDOL_scene'");
 
 
                 // #Critical

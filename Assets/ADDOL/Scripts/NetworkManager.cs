@@ -42,7 +42,7 @@ namespace WS3
         /// <param name="other"></param>
         public override void OnPlayerEnteredRoom(Player other)
         {
-            Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
+            //Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
             // TODO: 
             
         }
@@ -53,7 +53,7 @@ namespace WS3
         /// <param name="other"></param>
         public override void OnPlayerLeftRoom(Player other)
         {
-            Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
+            //Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
             // TODO: 
         }
         #endregion
@@ -79,27 +79,27 @@ namespace WS3
         void Start()
         {
             Instance = this;
-            Debug.Log("device:" + UserDeviceManager.GetDeviceUsed());
-            Debug.Log("prefab:" + UserDeviceManager.GetPrefabToSpawnWithDeviceUsed(playerPrefabPC, playerPrefabVR));
+            //Debug.Log("device:" + UserDeviceManager.GetDeviceUsed());
+            //Debug.Log("prefab:" + UserDeviceManager.GetPrefabToSpawnWithDeviceUsed(playerPrefabPC, playerPrefabVR));
 
             GameObject playerPrefab = UserDeviceManager.GetPrefabToSpawnWithDeviceUsed(playerPrefabPC, playerPrefabVR);
             if (playerPrefab == null)
             {
-                Debug.LogErrorFormat("<Color=Red><a>Missing</a></Color> playerPrefab Reference for device {0}. Please set it up in GameObject 'NetworkManager'", UserDeviceManager.GetDeviceUsed());
+                //Debug.LogErrorFormat("<Color=Red><a>Missing</a></Color> playerPrefab Reference for device {0}. Please set it up in GameObject 'NetworkManager'", UserDeviceManager.GetDeviceUsed());
             }
             else
             {
                 // TODO: Instantiate the prefab representing my own avatar only if it is UserMe
                 if (UserManager.UserMeInstance == null)
                 {
-                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
+                    //Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    Vector3 initialPos = UserDeviceManager.GetDeviceUsed() == UserDeviceType.OCULUS ? new Vector3(0f, 0f, 0f) : new Vector3(82.78f, 34.55f, 7.1f);
+                    Vector3 initialPos = UserDeviceManager.GetDeviceUsed() == UserDeviceType.OCULUS ? new Vector3(93.31f, 34.55f, 7.71f) : new Vector3(82.78f, 34.55f, 7.1f);
                     PhotonNetwork.Instantiate("Prefabs/" + playerPrefab.name, initialPos, Quaternion.identity, 0);
                 }
                 else
                 {
-                    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
+                    //Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace WS3
                 // Code to leave the room by pressing CTRL + the Leave button
                 if (Input.GetButtonUp("Leave"))
                 {
-                    Debug.Log("Leave event");
+                    //Debug.Log("Leave event");
                     LeaveRoom();
                 }
             }
