@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RotationCheck : MonoBehaviour
+public class RotationCheck : MonoBehaviourPunCallbacks
 {
     public int RotationCount;
 
@@ -23,7 +24,14 @@ public class RotationCheck : MonoBehaviour
         lastUp = transform.up;
     }
 
+    
     private void Update()
+    {
+        photonView.RPC("CountRotation", RpcTarget.AllViaServer);
+    }
+
+    [PunRPC]
+    private void CountRotation()
     {
         var rotationDifference = Vector3.SignedAngle(transform.up, lastUp, transform.right);
 
@@ -36,7 +44,9 @@ public class RotationCheck : MonoBehaviour
             RotationCount++;
 
             rotatedAroundX -= 360.0f;
-        } else if (rotatedAroundX <= -360.0f) {
+        }
+        else if (rotatedAroundX <= -360.0f)
+        {
             Debug.Log("One negative rotation done", this);
 
             RotationCount--;
