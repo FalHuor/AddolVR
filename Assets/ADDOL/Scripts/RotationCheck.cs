@@ -14,7 +14,7 @@ public class RotationCheck : MonoBehaviourPunCallbacks
 
     public ParticleSystem smoke;
 
-    //public UnityEvent On3TimesRotated;
+    public UnityEvent On3TimesRotated;
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class RotationCheck : MonoBehaviourPunCallbacks
         // check for fire the event
         if (RotationCount >= 2 && smoke.isPlaying)
         {
-            //On3TimesRotated?.Invoke();
+            On3TimesRotated?.Invoke();
             smoke.Stop();
             RotationCount = 0;
         }
