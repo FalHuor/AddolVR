@@ -5,12 +5,11 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class BreakJointBehaviour : MonoBehaviourPunCallbacks
+public class BreakJointBehaviour : MonoBehaviour
 {
 
     public GameObject TriggerZone;
 
-    [PunRPC]
     private void OnJointBreak(float breakForce)
     {
         Debug.Log("Joint Break");
